@@ -1,0 +1,17 @@
+{
+  "max_revisions": 2,
+  "max_governance_retries": 5,
+  "steps": {
+    "step-1": {
+      "critic_enabled": true
+    },
+    "step-2": {
+      "critic_enabled": true,
+      "governance_enabled": true
+    },
+    "step-3": {
+      "critic_enabled": true,
+      "governance_enabled": true
+    }
+  }
+}

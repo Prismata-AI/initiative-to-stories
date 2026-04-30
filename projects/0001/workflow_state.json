@@ -1,0 +1,24 @@
+{
+  "workflow_version": "7.0",
+  "started_at": "2026-04-30T00:06:43.836974+00:00",
+  "last_updated": "2026-04-30T00:06:43.836974+00:00",
+  "current_step": "step-1",
+  "current_phase": "draft",
+  "current_artefact_id": null,
+  "revision_counts": {
+    "step-1": 0,
+    "step-2": {},
+    "step-3": {}
+  },
+  "governance_retry_counts": {
+    "step-2": 0,
+    "step-3": 0
+  },
+  "gates": {
+    "step-1-approved": false,
+    "step-2-approved": false,
+    "step-3-approved": false
+  },
+  "last_action": null,
+  "status": "running"
+}
