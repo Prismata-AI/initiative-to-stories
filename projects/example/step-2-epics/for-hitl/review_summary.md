@@ -1,0 +1,111 @@
+# Review Summary — step-2
+
+## Artefacts for Review
+
+### epics.json
+
+```json
+{
+  "initiative_id": "NL_PROCESS_MAPPER",
+  "epics": [
+    {
+      "epic_id": "EPC-001",
+      "title": "Natural language extraction of structured process elements",
+      "description": "This epic delivers the capability to accept a free-form natural language description of a process and extract from it a structured representation of steps, decision points, roles or actors, and flow sequences. The extracted representation must be complete and well-formed enough to drive rendering and editing without further user intervention.",
+      "parent_hlr_id": "HLR-001",
+      "persona": "Business analyst",
+      "rationale": "Delivers the NL-to-structure parsing layer that HLR-001 identifies as the core differentiating capability upon which all rendering and editing depends."
+    },
+    {
+      "epic_id": "EPC-002",
+      "title": "In-browser visual process map rendering from structured data",
+      "description": "This epic delivers the capability to render a structured process representation as a visual process map in the browser, using standard process notation including swimlanes, decision diamonds, and flow arrows. The rendered output must be publication-quality and require no manual layout work from the user.",
+      "parent_hlr_id": "HLR-002",
+      "persona": "Business analyst",
+      "rationale": "Delivers the visual output layer HLR-002 requires - transforming structured data into a diagram the user can hand to a team or include in a document without additional formatting effort."
+    },
+    {
+      "epic_id": "EPC-003",
+      "title": "Direct visual editing of diagrams with representation sync",
+      "description": "This epic delivers the capability for users to edit a rendered process diagram through direct manipulation - reordering steps, renaming nodes, adding and removing steps - with every change propagated back into the underlying structured representation so the two remain in sync.",
+      "parent_hlr_id": "HLR-003",
+      "persona": "Business analyst",
+      "rationale": "Delivers the direct manipulation editing capability HLR-003 requires to address post-generation maintenance, ensuring visual changes are reflected in the data model rather than creating divergence."
+    },
+    {
+      "epic_id": "EPC-004",
+      "title": "Natural language modification of existing process diagrams",
+      "description": "This epic delivers the capability to accept natural language instructions against an existing diagram - such as inserting a step, reassigning an actor, or removing a branch - and apply those modifications to both the visual diagram and the underlying structured representation. This operates on an already-rendered diagram rather than producing one from scratch.",
+      "parent_hlr_id": "HLR-004",
+      "persona": "Business analyst",
+      "rationale": "Delivers the conversational editing mode HLR-004 requires to preserve the NL-first interaction model during process updates, not just initial creation."
+    },
+    {
+      "epic_id": "EPC-005",
+      "title": "Image format export for document and presentation embedding",
+      "description": "This epic delivers the capability to export a completed process map as a PNG raster image and as an SVG vector image, producing files suitable for embedding in design documents, presentations, and team handoffs.",
+      "parent_hlr_id": "HLR-005",
+      "persona": "Business analyst",
+      "rationale": "Delivers the image export formats HLR-005 identifies as meeting the primary user need - embeddable, shareable diagrams that exist outside the tool."
+    },
+    {
+      "epic_id": "EPC-006",
+      "title": "Structured JSON export of process data for downstream consumption",
+      "description": "This epic delivers the capability to export a completed process map as a structured JSON representation of the process data, enabling developers and technical writers to consume the process model in external tools and workflows.",
+      "parent_hlr_id": "HLR-005",
+      "persona": "Developer",
+      "rationale": "Delivers the machine-readable export format HLR-005 identifies as meeting the secondary user need - process data that can be consumed programmatically by external tools."
+    },
+    {
+      "epic_id": "EPC-007",
+      "title": "Detection of ambiguous and contradictory natural language input",
+      "description": "This epic delivers the capability to identify when a natural language process description is ambiguous, underspecified, or internally contradictory during parsing - producing a detection signal that can drive appropriate response behaviour rather than proceeding silently to a misleading diagram.",
+      "parent_hlr_id": "HLR-006",
+      "persona": "Business analyst",
+      "rationale": "Delivers the input quality assessment capability HLR-006 identifies as the prerequisite for honest output - the system cannot respond appropriately to bad input if it cannot detect it."
+    },
+    {
+      "epic_id": "EPC-008",
+      "title": "Clarification prompting and partial map marking for unresolved sections",
+      "description": "This epic delivers the user-facing response capability when ambiguous or contradictory input is detected - either prompting the user for clarification before proceeding, or rendering a partial map with explicit visual markers on unresolved sections, ensuring the user understands where the process representation is incomplete rather than receiving a silently wrong diagram.",
+      "parent_hlr_id": "HLR-006",
+      "persona": "Business analyst",
+      "rationale": "Delivers the response behaviour HLR-006 requires to prevent misleading output - the interaction model that surfaces ambiguity to the user rather than masking it."
+    },
+    {
+      "epic_id": "EPC-009",
+      "title": "Browser-native access without installation or mandatory account",
+      "description": "This epic delivers a product access model that requires no software installation and no mandatory account creation, allowing a user to arrive via browser and produce a process map without any preceding friction or sign-up step.",
+      "parent_hlr_id": "HLR-007",
+      "persona": "Business analyst",
+      "rationale": "Delivers the zero-friction access model HLR-007 identifies as a stated differentiator over conventional tools and the enabler of casual evaluation and word-of-mouth adoption."
+    },
+    {
+      "epic_id": "EPC-010",
+      "title": "Low-latency NL parsing and diagram generation experience",
+      "description": "This epic delivers a processing pipeline that users experience as responsive \u2014 NL input is parsed and diagrams are rendered without unnecessary delay, and where processing takes time the tool provides visible progress feedback rather than leaving the user with a blank or frozen interface. Output accuracy takes precedence over speed, but the system avoids latency that is not warranted by the quality of the result.",
+      "parent_hlr_id": "HLR-008",
+      "persona": "Business analyst",
+      "rationale": "HLR-008 requires response latency to be treated as a quality characteristic in backend and infrastructure design \u2014 this epic represents the user-observable result: a tool that processes input and returns results promptly, with honest feedback when processing takes longer."
+    },
+    {
+      "epic_id": "EPC-011",
+      "title": "Documented stable schema for JSON export interoperability",
+      "description": "This epic delivers a documented, stable JSON schema for process exports - covering steps, decision points, actors, and flow sequences - with sufficient specification that external tools can consume the output reliably without bespoke parsing or reverse-engineering of the structure.",
+      "parent_hlr_id": "HLR-009",
+      "persona": "Developer",
+      "rationale": "Delivers the schema contract HLR-009 requires to make the JSON export an integration point rather than an opaque data dump - the stability and documentation that enable the downstream tool consumption use case."
+    }
+  ]
+}
+```
+
+## Critique
+
+### Critique verdict
+
+**SATISFIED** — no issues raised.
+
+## Governance
+
+**PASS** — all traceability rules satisfied.

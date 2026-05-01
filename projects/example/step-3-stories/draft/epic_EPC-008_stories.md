@@ -1,0 +1,71 @@
+# Stories - EPC-008
+
+_3 stories._
+
+---
+
+## EPC-008-US-001 - Clarification requested when input cannot be resolved
+
+As a business analyst, I want the tool to ask me a specific question when it cannot interpret part of my process description, so that I can supply the missing information rather than accepting a diagram that silently misrepresents my intent.
+
+**Acceptance criteria:**
+
+**Scenario 1: Clarification question targets the specific unresolvable element**
+Given a process description that contains an ambiguous or underspecified element the system cannot resolve on its own, when I submit the description for processing, then the system presents me with a clarification question that identifies the specific element it cannot interpret - rather than a generic error or a request to rewrite the whole description.
+
+**Scenario 2: Providing a clarification answer allows processing to complete**
+Given that the system has presented me with a clarification question about a specific element, when I supply an answer that resolves the ambiguity, then the system uses my answer to complete the parsing and produces a diagram that reflects my clarified intent.
+
+**Scenario 3: Providing an answer that does not resolve the ambiguity prompts a follow-up**
+Given that the system has presented me with a clarification question, when I supply an answer that is itself ambiguous or incomplete, then the system recognises the answer is insufficient and prompts me again with a more specific question rather than proceeding to produce a potentially incorrect diagram.
+
+**Scenario 4: Unambiguous description does not trigger a clarification request**
+Given a process description that is fully specified and internally consistent, when I submit the description for processing, then the system does not present any clarification question and proceeds directly to producing the diagram.
+
+**Rationale:** Delivers the clarification prompting response mode EPC-008 identifies as the user-facing behaviour when detected ambiguity cannot be resolved without additional input from the user.
+
+---
+
+## EPC-008-US-002 - Partial map produced with unresolved sections visually marked
+
+As a business analyst, I want to receive a partial process map with explicit visual markers on any sections the tool could not confidently interpret, so that I can see the overall shape of the process while understanding exactly where it is incomplete.
+
+**Acceptance criteria:**
+
+**Scenario 1: Unresolved sections in a partial map are visually distinguishable from resolved sections**
+Given a process description with some sections that are well-specified and others that are ambiguous or underspecified, when the system renders a partial map, then the unresolved sections are visually distinct from the resolved sections in a way I can identify at a glance - without needing to read surrounding text to know which parts are uncertain.
+
+**Scenario 2: Each marker identifies what is unresolved about that section**
+Given a rendered partial map containing at least one marked unresolved section, when I examine a marker, then I can determine what the system was unable to resolve about that specific section - such as which actor is responsible, or what happens on a particular outcome path - rather than receiving only a generic indication of incompleteness.
+
+**Scenario 3: Resolved sections of the partial map are accurate and usable**
+Given a rendered partial map in which some sections are marked as unresolved, when I examine the sections that carry no unresolved marker, then those sections accurately represent the process I described and are not degraded or excluded due to the presence of unresolved sections elsewhere.
+
+**Scenario 4: A fully specified description produces a map with no unresolved markers**
+Given a process description that is complete and unambiguous, when the system renders the resulting map, then no sections carry unresolved markers and the entire map is presented as a confirmed representation.
+
+**Scenario 5: A fully unresolvable description does not produce a misleading diagram**
+Given a process description so sparse or contradictory that no section can be confidently interpreted, when I submit the description for processing, then the system does not render a misleading full diagram - it either presents a near-empty map with all sections marked as unresolved or withholds the map and requests clarification instead.
+
+**Rationale:** Delivers the partial map with explicit markers response mode EPC-008 identifies as the mechanism for surfacing ambiguity visually rather than masking it with a silently incorrect diagram.
+
+---
+
+## EPC-008-US-003 - Contradictory input surfaces the conflicting statements to the user
+
+As a business analyst, I want the tool to show me which specific parts of my description contradict each other when a conflict is detected, so that I can resolve the conflict myself rather than receiving a diagram built on an arbitrary resolution.
+
+**Acceptance criteria:**
+
+**Scenario 1: Both conflicting elements are identified in the response to the user**
+Given a process description in which two stated elements are mutually contradictory, when the system detects the contradiction and presents a response to me, then both of the conflicting elements are identified in that response so I can see what is in conflict rather than being told only that a problem exists.
+
+**Scenario 2: User can correct one contradicting element and receive a valid map**
+Given that the system has surfaced two contradicting elements to me, when I update my description to remove the contradiction and resubmit, then the system processes the corrected description without raising a contradiction signal and produces a diagram.
+
+**Scenario 3: Non-contradictory description does not trigger a contradiction response**
+Given a process description that contains no logical contradictions, when I submit the description for processing, then the system does not present a contradiction response and proceeds to produce a diagram normally.
+
+**Rationale:** Delivers the user-facing contradiction response behaviour EPC-008 requires - ensuring the user receives enough information to resolve a detected conflict rather than an opaque refusal to proceed.
+
+---

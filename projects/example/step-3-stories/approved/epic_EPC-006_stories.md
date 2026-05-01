@@ -1,0 +1,46 @@
+# Stories - EPC-006
+
+_2 stories._
+
+---
+
+## EPC-006-US-001 — Export process map as a machine-readable structured file
+
+As a developer, I want to export a completed process map as a structured data file, so that I can ingest the process model into my own tools and workflows without manually transcribing diagram content.
+
+**Acceptance criteria:**
+
+**Scenario 1: Exporting a completed map produces a downloadable structured data file**
+Given a completed process map displayed in the tool, when the developer triggers a structured data export, then a JSON file is downloaded containing a representation of the process map's current state.
+
+**Scenario 2: Exported file reflects a map that was modified after initial generation**
+Given a process map that was generated from natural language input and subsequently edited, when the developer exports the structured data file, then the file represents the current state of the diagram including all edits, not the original generated version.
+
+**Scenario 3: Export is attempted when no process map has been produced**
+Given the tool with no process map rendered, when the developer attempts to trigger a structured data export, then the export action is unavailable and the developer is informed that a process map must be present before exporting.
+
+**Rationale:** Traces to the EPC-006 capability of exporting a completed process map as a structured JSON representation that developers can consume in external tools and workflows.
+
+---
+
+## EPC-006-US-002 — Exported data file contains all structural process elements
+
+As a developer, I want the exported process data to include all steps, decision points, actors, and flow sequences from the diagram, so that I can reconstruct or analyse the full process model without any elements being omitted.
+
+**Acceptance criteria:**
+
+**Scenario 1: All step elements are present in the exported data**
+Given a process map containing three or more named steps, when the map is exported as structured data, then the exported file contains a representation of each step that corresponds to what is shown in the diagram, with no steps omitted.
+
+**Scenario 2: Decision points and their branches are represented in the exported data**
+Given a process map containing at least one decision point with two outgoing branches, when the map is exported as structured data, then the exported file contains an entry for the decision point and separate entries for each outgoing branch with their destinations identified.
+
+**Scenario 3: Actor attributions are represented in the exported data**
+Given a process map in which at least one step has an assigned actor, when the map is exported as structured data, then each step entry in the exported file includes the actor attributed to that step where one is assigned.
+
+**Scenario 4: A map with no actors assigned exports without actor fields causing an error**
+Given a process map in which no steps have assigned actors, when the map is exported as structured data, then the export completes successfully and actor-related fields are either absent or explicitly null rather than causing a parse error.
+
+**Rationale:** Traces to the EPC-006 requirement that the exported JSON represents steps, decision points, actors, and flow sequences in a form that enables programmatic consumption by external tools.
+
+---

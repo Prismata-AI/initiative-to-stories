@@ -1,0 +1,15 @@
+{
+  "decision": "approved_with_changes",
+  "reviewer": "Todd",
+  "reviewed_at": "2026-05-01T00:20:00.000000+00:00",
+  "revisions": [
+    {
+      "artefact_id": "HLR-007",
+      "verbatim": "The 10-second response time is a quality target, not a hard requirement. Accuracy and quality take precedence over speed."
+    },
+    {
+      "artefact_id": "HLR-008",
+      "verbatim": "The 10-second response time is a quality target, not a hard requirement. Accuracy and quality take precedence over speed."
+    }
+  ]
+}

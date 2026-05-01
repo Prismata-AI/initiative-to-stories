@@ -1,0 +1,77 @@
+{
+  "initiative_id": "NL_PROCESS_MAPPER",
+  "hlrs": [
+    {
+      "hlr_id": "HLR-001",
+      "title": "Natural Language Input to Structured Process Representation",
+      "description": "The system must accept a free-form natural language description of a process and extract a structured representation comprising steps, decision points, roles or actors, and flow sequences. The structured representation must be sufficient to drive diagram rendering without further user intervention.",
+      "rationale": "This is the core differentiating capability — the NL-to-structure layer that existing tools do not provide, and upon which all rendering and editing depends.",
+      "impact_if_omitted": "The product is indistinguishable from a conventional diagram editor and the primary differentiator does not exist.",
+      "type": "functional"
+    },
+    {
+      "hlr_id": "HLR-002",
+      "title": "Visual Process Diagram Rendering from Structured Data",
+      "description": "The system must render the structured process representation as a visual process map in the browser, using standard process notation including swimlanes, decision diamonds, and flow arrows.",
+      "rationale": "Addresses the primary user goal of producing a usable, publication-quality diagram without manual layout work.",
+      "impact_if_omitted": "The tool produces structured data with no human-readable output, and the core user value — a diagram you can hand to a dev team or include in a document — is not delivered.",
+      "type": "functional"
+    },
+    {
+      "hlr_id": "HLR-003",
+      "title": "Direct Visual Diagram Editing with Representation Sync",
+      "description": "The system must allow users to edit the rendered diagram through direct manipulation — reordering steps, renaming nodes, adding and removing steps — and must update the underlying structured representation to reflect each change.",
+      "rationale": "Addresses the maintenance friction identified in the problem statement: processes change, and users must be able to update a map without starting over.",
+      "impact_if_omitted": "The tool is useful for initial generation only; iterative refinement reverts users to the manual overhead of conventional tools.",
+      "type": "functional"
+    },
+    {
+      "hlr_id": "HLR-004",
+      "title": "Natural Language Instructions for Diagram Modification",
+      "description": "The system must accept natural language instructions that modify an existing diagram — such as inserting a step between two existing steps or reassigning an actor — and must update both the visual diagram and the underlying structured representation accordingly.",
+      "rationale": "Preserves the natural language interaction model as the primary editing interface, consistent with the tool's AI-first positioning and its design for verbal thinkers.",
+      "impact_if_omitted": "Users who prefer natural language editing are forced to switch to visual manipulation for changes, undermining the core interaction model and differentiator.",
+      "type": "functional"
+    },
+    {
+      "hlr_id": "HLR-005",
+      "title": "Export to PNG, SVG, and Structured JSON",
+      "description": "The system must support export of a completed process map in at least three formats: PNG, SVG, and a structured JSON representation of the process data.",
+      "rationale": "Addresses both primary user needs (embeddable diagrams for documents and handoffs) and secondary user needs (developers and technical writers requiring machine-readable process data).",
+      "impact_if_omitted": "Maps exist only within the tool; the design document and developer handoff use cases explicitly cited as the standard of useful output are not met.",
+      "type": "functional"
+    },
+    {
+      "hlr_id": "HLR-006",
+      "title": "Ambiguous or Contradictory Input Detection and Handling",
+      "description": "The system must detect when a natural language description is ambiguous, underspecified, or contradictory, and must respond by prompting the user for clarification or rendering a partial map with explicit markers on unresolved sections, rather than silently producing a diagram that misrepresents the described process.",
+      "rationale": "Ambiguity in NL input is identified in the concept as a known risk; a silently wrong process map handed to a dev team or included in documentation is worse than no map.",
+      "impact_if_omitted": "The tool produces misleading diagrams from poorly-specified input, trust in outputs degrades, and the publication-quality claim cannot be sustained.",
+      "type": "functional"
+    },
+    {
+      "hlr_id": "HLR-007",
+      "title": "Browser-Native Zero-Install Access",
+      "description": "The system shall be fully accessible in a standard browser without software installation or mandatory account creation. Fast time-to-first-map is a quality target — the tool should feel responsive — but output quality and correctness take precedence over raw latency.",
+      "rationale": "Zero-install access is an explicitly stated differentiator over conventional tools, and frictionless access is central to casual evaluation and word-of-mouth adoption.",
+      "impact_if_omitted": "The friction advantage over existing tools is removed and the frictionless-trial adoption model is not viable.",
+      "type": "non_functional"
+    },
+    {
+      "hlr_id": "HLR-008",
+      "title": "NL Parsing and Rendering Latency as a Quality Target",
+      "description": "The system shall treat response latency as a quality characteristic to optimise for, not a hard constraint. Backend and infrastructure choices should favour fast NL parsing and rendering, with the understanding that output accuracy and completeness take precedence when they are in tension with speed.",
+      "rationale": "Fast results are part of the intended user experience, but the concept note is explicit that quality matters more than speed — responsiveness should be a design consideration, not a ceiling the product compromises correctness to meet.",
+      "impact_if_omitted": "Without any latency guidance, backend architecture decisions may not treat responsiveness as a quality dimension at all, producing a tool that is both slow and accurate when a reasonable balance is achievable.",
+      "type": "non_functional"
+    },
+    {
+      "hlr_id": "HLR-009",
+      "title": "Stable, Documented JSON Export Schema",
+      "description": "The system must produce a JSON export that conforms to a documented, stable schema representing steps, decision points, actors, and flow sequences in a form consumable by external tools without bespoke parsing.",
+      "rationale": "The secondary user audience — developers and technical writers — requires reliable machine-readable output; an undocumented or unstable schema limits interoperability.",
+      "impact_if_omitted": "The JSON export functions as an opaque data dump rather than an integration point, and the downstream tool consumption use case is not reliably achievable.",
+      "type": "non_functional"
+    }
+  ]
+}

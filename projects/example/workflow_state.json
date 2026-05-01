@@ -1,24 +1,24 @@
 {
   "workflow_version": "7.0",
   "started_at": "2026-04-30T00:06:43.836974+00:00",
-  "last_updated": "2026-04-30T00:06:43.836974+00:00",
-  "current_step": "step-1",
-  "current_phase": "draft",
+  "last_updated": "2026-05-01T01:00:00.000000+00:00",
+  "current_step": "step-3",
+  "current_phase": "approved",
   "current_artefact_id": null,
   "revision_counts": {
     "step-1": 0,
-    "step-2": {},
-    "step-3": {}
+    "step-2": { "all": 1 },
+    "step-3": { "all": 1 }
   },
   "governance_retry_counts": {
     "step-2": 0,
     "step-3": 0
   },
   "gates": {
-    "step-1-approved": false,
-    "step-2-approved": false,
-    "step-3-approved": false
+    "step-1-approved": true,
+    "step-2-approved": true,
+    "step-3-approved": true
   },
-  "last_action": null,
-  "status": "running"
+  "last_action": "Step 3 approved and artefacts promoted",
+  "status": "complete"
 }
